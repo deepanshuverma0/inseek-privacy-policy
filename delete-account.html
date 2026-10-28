@@ -1,39 +1,369 @@
 
-<section>
-  <h2>How to delete your InSeek account</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#09090b" />
+  <meta name="description" content="Learn how to permanently delete your InSeek account and request help with account deletion." />
+  <title>Delete Account — InSeek</title>
 
-  <p>
-    You can permanently delete your InSeek account directly
-    from the InSeek app.
-  </p>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #09090b;
+      --surface: #111114;
+      --border: #27272a;
+      --text: #fafafa;
+      --muted: #a1a1aa;
+      --accent: #a3e635;
+      --danger: #fca5a5;
+    }
 
-  <ol>
-    <li>Open the InSeek app and sign in to your account.</li>
-    <li>Navigate to <strong>Settings</strong>.</li>
-    <li>Select <strong>Delete Account</strong>.</li>
-    <li>
-      Follow the on-screen instructions to confirm
-      account deletion.
-    </li>
-  </ol>
+    * { box-sizing: border-box; }
 
-  <p>
-    <strong>Important:</strong> Account deletion is permanent.
-    Once your request is processed, your account and associated
-    data will be deleted and you may no longer be able to recover them.
-  </p>
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, #20251a 0%, transparent 50%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  <h3>Can't access your account?</h3>
+    a { color: inherit; }
 
-  <p>
-    If you cannot sign in or are unable to delete your account
-    through the app, contact us at
-    <a href="mailto:support@inseek.co.in?subject=InSeek%20Account%20Deletion%20Request">
-      support@inseek.co.in
-    </a>
-    with the subject line
-    <strong>InSeek Account Deletion Request</strong>.
-    We may ask you to verify ownership of your account before
-    processing your request.
-  </p>
-</section>
+    .container {
+      width: min(100% - 40px, 820px);
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(9, 9, 11, 0.8);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 19px;
+      font-weight: 750;
+      letter-spacing: -0.6px;
+      text-decoration: none;
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--accent);
+      color: #10110b;
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nav-link:hover, .support-link:hover {
+      color: var(--accent);
+    }
+
+    main { padding: 76px 0 88px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    h1 {
+      max-width: 700px;
+      margin: 18px 0;
+      font-size: clamp(38px, 7vw, 58px);
+      letter-spacing: -2.8px;
+      line-height: 1.08;
+    }
+
+    .intro {
+      max-width: 610px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .panel {
+      margin-top: 38px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(17, 17, 20, 0.9);
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtext {
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .step {
+      display: flex;
+      gap: 17px;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .number {
+      flex: 0 0 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #3f4b2a;
+      border-radius: 12px;
+      background: #1a2112;
+      color: var(--accent);
+      font-weight: 750;
+    }
+
+    .step h3 {
+      margin: 2px 0 4px;
+      font-size: 16px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .warning {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      margin-top: 24px;
+      padding: 18px;
+      border: 1px solid #553030;
+      border-radius: 14px;
+      background: #211416;
+    }
+
+    .warning-icon {
+      color: var(--danger);
+      font-size: 19px;
+      line-height: 1.5;
+    }
+
+    .warning strong {
+      display: block;
+      margin-bottom: 3px;
+      color: #fecaca;
+    }
+
+    .warning p {
+      margin: 0;
+      color: #d4a9a9;
+      font-size: 13px;
+    }
+
+    .support {
+      margin-top: 22px;
+      padding: 28px 30px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: #0f0f12;
+    }
+
+    .support p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .support-link {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--accent);
+      font-weight: 650;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .fine-print {
+      margin-top: 24px;
+      color: #71717a;
+      font-size: 12px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 27px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    @media (max-width: 560px) {
+      .container { width: min(100% - 32px, 820px); }
+      main { padding: 52px 0 64px; }
+      h1 { letter-spacing: -1.8px; }
+      .panel, .support { padding: 22px 18px; }
+      .intro { font-size: 15px; }
+      .step { gap: 12px; }
+      .number { flex-basis: 34px; height: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="https://inseek.co.in/" aria-label="InSeek home">
+        <span class="logo">i</span>
+        <span>InSeek</span>
+      </a>
+      <a class="nav-link" href="https://inseek.co.in/">Find your people ↗</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="eyebrow">
+      <span class="dot"></span>
+      Account management
+    </div>
+
+    <h1>Delete your<br />InSeek account.</h1>
+
+    <p class="intro">
+      You’re in control of your account. You can permanently delete
+      your InSeek account directly from the app by following the
+      steps below.
+    </p>
+
+    <section class="panel">
+      <h2>How it works</h2>
+      <p class="subtext">
+        Complete these steps in the InSeek mobile app.
+      </p>
+
+      <div class="step">
+        <div class="number">01</div>
+        <div>
+          <h3>Open InSeek</h3>
+          <p>Launch the app and sign in to the account you want to delete.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="number">02</div>
+        <div>
+          <h3>Go to Settings</h3>
+          <p>Open the Settings section in your account.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="number">03</div>
+        <div>
+          <h3>Select Delete Account</h3>
+          <p>Choose the Delete Account option in Settings.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="number">04</div>
+        <div>
+          <h3>Confirm your decision</h3>
+          <p>Follow the on-screen instructions to confirm permanent deletion.</p>
+        </div>
+      </div>
+
+      <div class="warning">
+        <span class="warning-icon" aria-hidden="true">!</span>
+        <div>
+          <strong>This action is permanent</strong>
+          <p>
+            Account deletion cannot be undone. Your account and
+            associated data will be deleted according to InSeek’s
+            data deletion process. Some data may be retained where
+            required by law or for legitimate security purposes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="support">
+      <h2>Need help?</h2>
+      <p>
+        Can't access your account or complete the deletion process?
+        Contact our support team. We may ask you to verify ownership
+        of your account before processing your request.
+      </p>
+
+      <a
+        class="support-link"
+        href="mailto:support@inseek.co.in?subject=InSeek%20Account%20Deletion%20Request"
+      >
+        support@inseek.co.in ↗
+      </a>
+    </section>
+
+    <p class="fine-print">
+      For more information about how InSeek handles personal data,
+      please read our privacy policy.
+    </p>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© InSeek — Find your people</span>
+      <a href="https://inseek.co.in/">inseek.co.in</a>
+    </div>
+  </footer>
+</body>
+</html>
