@@ -1,23 +1,1554 @@
-```html
-<footer>
-  <div class="container footer-inner">
-    <span>
-      © <span id="year">2026</span> InSeek · Find your people
-    </span>
 
-    <nav class="footer-links" aria-label="Footer navigation">
-      <a href="https://inseek.co.in/privacy-policy">Privacy Policy</a>
-      <a href="https://inseek.co.in/child-safety">Child Safety</a>
-      <a href="https://inseek.co.in/delete-account">Delete Account</a>
-      <a href="mailto:support@inseek.co.in">Contact</a>
-    </nav>
-  </div>
-</footer>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#09090b" />
 
-<script>
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
-</script>
+  <title>InSeek — Find your people</title>
+  <meta
+    name="description"
+    content="Discover people who share your interests and are looking for the same connections. InSeek helps you find your people."
+  />
+  <meta property="og:title" content="InSeek — Find your people" />
+  <meta
+    property="og:description"
+    content="Less noise. More meaningful connections. Discover your people on InSeek."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://inseek.co.in/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #09090b;
+      --surface: #101012;
+      --surface-2: #151518;
+      --border: #27272a;
+      --text: #fafafa;
+      --muted: #a1a1aa;
+      --lime: #a3e635;
+      --lime-dark: #84cc16;
+      --radius: 20px;
+      --container: 1160px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          ellipse at 50% 0%,
+          rgba(163, 230, 53, 0.075),
+          transparent 43%
+        );
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    ::selection {
+      background: var(--lime);
+      color: #09090b;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      max-width: 680px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 18px;
+      color: var(--lime);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 12px rgba(163, 230, 53, 0.4);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Space Grotesk", sans-serif;
+      letter-spacing: -0.045em;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0 auto 22px;
+      font-size: clamp(44px, 7vw, 82px);
+      font-weight: 600;
+      line-height: 1.06;
+    }
+
+    h2 {
+      margin-bottom: 16px;
+      font-size: clamp(32px, 4.5vw, 48px);
+      line-height: 1.15;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+      line-height: 1.3;
+    }
+
+    .accent {
+      color: var(--lime);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .section-description {
+      max-width: 590px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    /* Navigation */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(39, 39, 42, 0.8);
+      background: rgba(9, 9, 11, 0.86);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--lime);
+      color: #09090b;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 23px;
+      font-weight: 700;
+      letter-spacing: -0.09em;
+    }
+
+    .brand-name {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 23px;
+      font-weight: 700;
+      letter-spacing: -0.06em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links > a:not(.button) {
+      color: #c4c4cc;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links > a:not(.button):hover {
+      color: var(--lime);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .menu-toggle svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* Buttons */
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 21px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: var(--lime);
+      color: #10120a;
+    }
+
+    .button-primary:hover {
+      background: #bef264;
+    }
+
+    .button-secondary {
+      border-color: #35353a;
+      background: rgba(255, 255, 255, 0.025);
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      border-color: #66666b;
+      background: var(--surface-2);
+    }
+
+    .button svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 76px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 26px;
+      padding: 8px 13px;
+      border: 1px solid rgba(163, 230, 53, 0.2);
+      border-radius: 100px;
+      background: rgba(163, 230, 53, 0.045);
+      color: #d9f99d;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .hero-pill span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+    }
+
+    .hero-description {
+      max-width: 570px;
+      margin: 0 auto;
+      color: #b4b4bd;
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .hero-note {
+      margin-top: 16px;
+      color: #777780;
+      font-size: 12px;
+    }
+
+    .hero-visual {
+      position: relative;
+      max-width: 940px;
+      min-height: 410px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 68px auto 0;
+      perspective: 1100px;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 70%;
+      height: 60%;
+      border-radius: 50%;
+      background: rgba(163, 230, 53, 0.09);
+      filter: blur(85px);
+    }
+
+    /* CSS-built phone preview */
+
+    .phone {
+      position: relative;
+      z-index: 2;
+      width: 250px;
+      min-height: 430px;
+      padding: 9px;
+      overflow: hidden;
+      border: 1px solid #414145;
+      border-radius: 35px;
+      background: #050506;
+      box-shadow: 0 25px 90px rgba(0, 0, 0, 0.55);
+    }
+
+    .phone-screen {
+      min-height: 410px;
+      overflow: hidden;
+      border-radius: 26px;
+      background: #101012;
+    }
+
+    .phone-status {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 15px 8px;
+      color: #c9c9cf;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .phone-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 13px 14px;
+    }
+
+    .phone-brand {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.06em;
+    }
+
+    .phone-brand span {
+      color: var(--lime);
+    }
+
+    .tiny-icon {
+      width: 27px;
+      height: 27px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #303035;
+      border-radius: 9px;
+      color: #d4d4d8;
+      font-size: 12px;
+    }
+
+    .phone-section-title {
+      padding: 0 13px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+    }
+
+    .phone-subtitle {
+      padding: 3px 13px 12px;
+      color: #8b8b95;
+      font-size: 10px;
+    }
+
+    .person-card {
+      margin: 0 10px;
+      padding: 13px;
+      border: 1px solid #303035;
+      border-radius: 17px;
+      background: linear-gradient(145deg, #1b1b1f, #111113);
+    }
+
+    .avatar {
+      width: 51px;
+      height: 51px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(163, 230, 53, 0.3);
+      border-radius: 16px;
+      background: linear-gradient(135deg, #394a25, #1b2413);
+      color: #d9f99d;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .person-name {
+      margin-top: 11px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .person-bio {
+      margin-top: 2px;
+      color: #a1a1aa;
+      font-size: 10px;
+    }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .chip {
+      padding: 5px 8px;
+      border: 1px solid #34343a;
+      border-radius: 7px;
+      background: #19191c;
+      color: #d4d4d8;
+      font-size: 9px;
+    }
+
+    .chip.highlight {
+      border-color: rgba(163, 230, 53, 0.28);
+      background: rgba(163, 230, 53, 0.07);
+      color: #d9f99d;
+    }
+
+    .match-line {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 13px;
+      color: #d9f99d;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .match-line span {
+      display: inline-grid;
+      width: 16px;
+      height: 16px;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(163, 230, 53, 0.14);
+    }
+
+    .phone-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .phone-action {
+      flex: 1;
+      padding: 9px;
+      border: 1px solid #39393f;
+      border-radius: 10px;
+      color: #dedee3;
+      text-align: center;
+      font-size: 10px;
+    }
+
+    .phone-action.primary {
+      border-color: var(--lime);
+      background: var(--lime);
+      color: #10120a;
+      font-weight: 700;
+    }
+
+    .phone-bottom {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 14px;
+      padding: 11px 0 7px;
+      border-top: 1px solid #29292e;
+      color: #85858e;
+      font-size: 9px;
+    }
+
+    .phone-bottom .active {
+      color: var(--lime);
+    }
+
+    .floating-card {
+      position: absolute;
+      z-index: 3;
+      width: 225px;
+      padding: 17px;
+      border: 1px solid #343439;
+      border-radius: 17px;
+      background: rgba(18, 18, 21, 0.94);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(12px);
+    }
+
+    .floating-left {
+      top: 55px;
+      left: 0;
+      transform: rotate(-5deg);
+    }
+
+    .floating-right {
+      right: 0;
+      bottom: 45px;
+      transform: rotate(4deg);
+    }
+
+    .float-label {
+      margin-bottom: 11px;
+      color: #a1a1aa;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .float-title {
+      margin-bottom: 12px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .float-interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .float-interests span {
+      padding: 5px 8px;
+      border: 1px solid #343439;
+      border-radius: 7px;
+      color: #d4d4d8;
+      font-size: 10px;
+    }
+
+    .message-preview {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      margin-top: 11px;
+    }
+
+    .message-avatar {
+      width: 29px;
+      height: 29px;
+      display: grid;
+      flex-shrink: 0;
+      place-items: center;
+      border-radius: 10px;
+      background: #28341c;
+      color: var(--lime);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .message-bubble {
+      padding: 9px 10px;
+      border: 1px solid #333338;
+      border-radius: 4px 12px 12px 12px;
+      background: #222226;
+      color: #dedee3;
+      font-size: 10px;
+    }
+
+    .message-bubble small {
+      display: block;
+      margin-top: 4px;
+      color: #85858e;
+      font-size: 9px;
+    }
+
+    /* Feature cards */
+
+    .features {
+      border-top: 1px solid #1e1e22;
+      border-bottom: 1px solid #1e1e22;
+      background: rgba(255, 255, 255, 0.012);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card {
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #121214, #0d0d0f);
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: #4a4a40;
+    }
+
+    .feature-icon {
+      width: 47px;
+      height: 47px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 23px;
+      border: 1px solid rgba(163, 230, 53, 0.2);
+      border-radius: 14px;
+      background: rgba(163, 230, 53, 0.075);
+      color: var(--lime);
+    }
+
+    .feature-icon svg {
+      width: 23px;
+      height: 23px;
+    }
+
+    .feature-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* Interests */
+
+    .interests-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .interests-copy h2 {
+      max-width: 450px;
+    }
+
+    .interests-copy p {
+      max-width: 450px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .interest-board {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background:
+        radial-gradient(
+          circle at 100% 0%,
+          rgba(163, 230, 53, 0.07),
+          transparent 45%
+        ),
+        #101012;
+    }
+
+    .interest-board-label {
+      margin-bottom: 22px;
+      color: #a1a1aa;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .interest-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .interest-tag {
+      padding: 11px 15px;
+      border: 1px solid #343439;
+      border-radius: 11px;
+      background: #171719;
+      color: #e4e4e7;
+      font-size: 13px;
+      transition:
+        border-color 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .interest-tag:hover {
+      border-color: var(--lime);
+      color: var(--lime);
+    }
+
+    .interest-tag.selected {
+      border-color: rgba(163, 230, 53, 0.45);
+      background: rgba(163, 230, 53, 0.08);
+      color: #d9f99d;
+    }
+
+    .interest-board-note {
+      margin: 23px 0 0;
+      color: #85858e;
+      font-size: 12px;
+    }
+
+    /* How it works */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 30px;
+    }
+
+    .step {
+      position: relative;
+      padding-top: 24px;
+      border-top: 1px solid #343439;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 21px;
+      border: 1px solid rgba(163, 230, 53, 0.3);
+      border-radius: 11px;
+      background: rgba(163, 230, 53, 0.07);
+      color: var(--lime);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .step p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    /* Final CTA */
+
+    .cta-section {
+      padding: 45px 0 110px;
+    }
+
+    .cta-panel {
+      position: relative;
+      overflow: hidden;
+      padding: 70px 30px;
+      border: 1px solid rgba(163, 230, 53, 0.23);
+      border-radius: 28px;
+      background:
+        radial-gradient(
+          ellipse at 50% 120%,
+          rgba(163, 230, 53, 0.12),
+          transparent 60%
+        ),
+        #101012;
+      text-align: center;
+    }
+
+    .cta-panel h2 {
+      max-width: 620px;
+      margin-inline: auto;
+    }
+
+    .cta-panel p {
+      max-width: 510px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .cta-panel .hero-actions {
+      margin-top: 26px;
+    }
+
+    /* Footer */
+
+    .site-footer {
+      border-top: 1px solid #252529;
+      background: #080809;
+    }
+
+    .footer-main {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 43px 0;
+    }
+
+    .footer-brand {
+      max-width: 300px;
+    }
+
+    .footer-brand p {
+      margin: 14px 0 0;
+      color: #85858e;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .footer-links-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 18px 25px;
+      padding-top: 9px;
+    }
+
+    .footer-links-group a {
+      color: #a1a1aa;
+      font-size: 13px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links-group a:hover {
+      color: var(--lime);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 19px 0;
+      border-top: 1px solid #202024;
+      color: #71717a;
+      font-size: 12px;
+    }
+
+    .footer-bottom a {
+      color: #a1a1aa;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--lime);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .section {
+        padding: 78px 0;
+      }
+
+      .hero {
+        padding-top: 80px;
+      }
+
+      .hero-visual {
+        max-width: 700px;
+        min-height: 390px;
+      }
+
+      .phone {
+        transform: scale(0.92);
+      }
+
+      .floating-left {
+        left: 0;
+      }
+
+      .floating-right {
+        right: 0;
+      }
+
+      .floating-card {
+        width: 190px;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .interests-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .interests-copy h2,
+      .interests-copy p {
+        max-width: 620px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 34px, var(--container));
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .brand-mark {
+        width: 35px;
+        height: 35px;
+      }
+
+      .brand-name {
+        font-size: 21px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 1px);
+        right: 0;
+        left: 0;
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        padding: 12px 17px 18px;
+        border-bottom: 1px solid var(--border);
+        background: #0c0c0e;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links > a:not(.button) {
+        padding: 13px 4px;
+      }
+
+      .nav-links .button {
+        margin-top: 8px;
+      }
+
+      .hero {
+        padding: 67px 0 48px;
+      }
+
+      h1 {
+        font-size: clamp(43px, 12vw, 61px);
+      }
+
+      .hero-pill {
+        font-size: 11px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 330px;
+        margin-inline: auto;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .hero-visual {
+        min-height: 395px;
+        margin-top: 32px;
+      }
+
+      .phone {
+        width: 235px;
+        transform: scale(0.86);
+      }
+
+      .floating-card {
+        width: 155px;
+        padding: 12px;
+      }
+
+      .floating-left {
+        top: 18px;
+        left: -5px;
+      }
+
+      .floating-right {
+        right: -5px;
+        bottom: 20px;
+      }
+
+      .float-title {
+        font-size: 13px;
+      }
+
+      .float-interests span {
+        padding: 4px 6px;
+        font-size: 9px;
+      }
+
+      .section {
+        padding: 66px 0;
+      }
+
+      .section-heading {
+        margin-bottom: 32px;
+      }
+
+      .section-description {
+        font-size: 14px;
+      }
+
+      .feature-grid,
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 13px;
+      }
+
+      .feature-card {
+        padding: 23px;
+      }
+
+      .feature-icon {
+        margin-bottom: 18px;
+      }
+
+      .interest-board {
+        padding: 20px;
+      }
+
+      .interest-tag {
+        padding: 9px 11px;
+        font-size: 12px;
+      }
+
+      .cta-section {
+        padding: 20px 0 70px;
+      }
+
+      .cta-panel {
+        padding: 48px 21px;
+        border-radius: 22px;
+      }
+
+      .footer-main {
+        flex-direction: column;
+        gap: 25px;
+        padding: 34px 0;
+      }
+
+      .footer-links-group {
+        justify-content: flex-start;
+        gap: 14px 20px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 9px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="InSeek homepage">
+        <span class="brand-mark">i.</span>
+        <span class="brand-name">InSeek</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.8" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#features">Why InSeek</a>
+        <a href="#interests">Interests</a>
+        <a href="#how-it-works">How it works</a>
+        <a class="button button-primary" href="mailto:support@inseek.co.in">
+          Get in touch
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-pill">
+            <span></span>
+            Meet beyond your existing circle
+          </div>
+
+          <h1>
+            Your interests.<br />
+            Your people.<br />
+            <span class="accent">Your next connection.</span>
+          </h1>
+
+          <p class="hero-description">
+            Discover people who share what you love and understand what
+            you're looking for. Start with common interests. See where
+            the conversation takes you.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#how-it-works">
+              Discover InSeek
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+
+            <a class="button button-secondary" href="#features">
+              See what makes it different
+            </a>
+          </div>
+
+          <p class="hero-note">
+            Less noise. More meaningful connections.
+          </p>
+        </div>
+
+        <!-- Illustrative app preview made with HTML and CSS -->
+        <div class="hero-visual" aria-label="Illustrative preview of InSeek's people discovery interface">
+          <div class="hero-glow"></div>
+
+          <div class="floating-card floating-left">
+            <div class="float-label">Your kind of people</div>
+            <div class="float-title">
+              Good conversations<br />
+              start with common ground.
+            </div>
+            <div class="float-interests">
+              <span>AI</span>
+              <span>Startups</span>
+              <span>Psychology</span>
+              <span>Gaming</span>
+            </div>
+          </div>
+
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="phone-status">
+                <span>9:41</span>
+                <span>● ● ▰</span>
+              </div>
+
+              <div class="phone-topbar">
+                <div class="phone-brand">In<span>Seek</span></div>
+                <div class="tiny-icon">⌕</div>
+              </div>
+
+              <div class="phone-section-title">Discover people</div>
+              <div class="phone-subtitle">
+                Find people who get what you're into.
+              </div>
+
+              <div class="person-card">
+                <div class="avatar">A</div>
+                <div class="person-name">Alex</div>
+                <div class="person-bio">
+                  Building things. Learning constantly.
+                </div>
+
+                <div class="chip-list">
+                  <span class="chip highlight">Coding</span>
+                  <span class="chip highlight">AI</span>
+                  <span class="chip">Startups</span>
+                </div>
+
+                <div class="match-line">
+                  <span>✓</span>
+                  Shared interests
+                </div>
+
+                <div class="phone-actions">
+                  <div class="phone-action">Skip</div>
+                  <div class="phone-action primary">Connect ↗</div>
+                </div>
+              </div>
+
+              <div class="phone-bottom">
+                <span class="active">Discover</span>
+                <span>Requests</span>
+                <span>Chats</span>
+                <span>Profile</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-card floating-right">
+            <div class="float-label">A conversation starts</div>
+            <div class="float-title">From shared interests to real conversations.</div>
+
+            <div class="message-preview">
+              <div class="message-avatar">A</div>
+              <div class="message-bubble">
+                What are you building lately?
+                <small>Just now · Illustrative preview</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section features" id="features">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">A different kind of social</span>
+          <h2>Less scrolling.<br /><span class="accent">More connecting.</span></h2>
+          <p class="section-description">
+            InSeek is built around discovering people, shared interests,
+            and the connections you actually want to make.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.7" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="10.5" cy="10.5" r="6.5" />
+                <path d="m16 16 4 4M8 10.5h5M10.5 8v5" />
+              </svg>
+            </div>
+            <h3>Discover beyond your circle</h3>
+            <p>
+              Find people you might never have met otherwise, based on
+              the interests and intentions you choose.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.7" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 21s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.5-8 11-8 11Z" />
+              </svg>
+            </div>
+            <h3>Connect with intention</h3>
+            <p>
+              Looking for friendship, a co-founder, mentorship, a study
+              partner, networking, or dating? Be clear about what you want.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.7" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z" />
+              </svg>
+            </div>
+            <h3>Turn connections into conversations</h3>
+            <p>
+              Send connection requests and chat when you connect.
+              A shared interest can be the start of something meaningful.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERESTS -->
+    <section class="section" id="interests">
+      <div class="container interests-layout">
+        <div class="interests-copy">
+          <span class="eyebrow">Start with what you love</span>
+          <h2>Find your people through <span class="accent">shared interests.</span></h2>
+          <p>
+            You don't have to have everything in common. Sometimes one
+            shared passion is enough to start a great conversation.
+            Choose the interests that feel like you and discover people
+            with something in common.
+          </p>
+          <p>
+            From late-night coding sessions to conversations about
+            philosophy, there's more than one way to connect.
+          </p>
+        </div>
+
+        <div class="interest-board">
+          <div class="interest-board-label">A few things you might be into</div>
+
+          <div class="interest-grid">
+            <span class="interest-tag selected">⌘ Coding</span>
+            <span class="interest-tag selected">✳ AI</span>
+            <span class="interest-tag">↗ Startups</span>
+            <span class="interest-tag">◉ Psychology</span>
+            <span class="interest-tag">◇ Philosophy</span>
+            <span class="interest-tag">↯ Fitness</span>
+            <span class="interest-tag">♫ Music</span>
+            <span class="interest-tag">▣ Gaming</span>
+            <span class="interest-tag">✦ Anime</span>
+            <span class="interest-tag">▤ Reading</span>
+          </div>
+
+          <p class="interest-board-note">
+            Illustrative interest display. Available choices may change
+            as InSeek evolves.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Simple by design</span>
+          <h2>Three steps to a <span class="accent">new connection.</span></h2>
+          <p class="section-description">
+            No complicated profile-building. Start with who you are
+            and what kind of connection you're looking for.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">01</div>
+            <h3>Show what you're into</h3>
+            <p>
+              Choose your interests and the kinds of connections you
+              would like to make.
+            </p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">02</div>
+            <h3>Discover your people</h3>
+            <p>
+              Explore profiles of people with shared interests and
+              compatible connection intentions.
+            </p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">03</div>
+            <h3>Start a conversation</h3>
+            <p>
+              Send a connection request. When you connect, start
+              chatting and see where things go.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-panel">
+          <span class="eyebrow">Your next connection starts here</span>
+          <h2>There's a whole world of people you <span class="accent">haven't met yet.</span></h2>
+          <p>
+            Find the people who share your interests, your curiosity,
+            and the things you're working towards.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:support@inseek.co.in">
+              Say hello to InSeek
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a class="brand" href="/" aria-label="InSeek homepage">
+          <span class="brand-mark">i.</span>
+          <span class="brand-name">InSeek</span>
+        </a>
+
+        <p>
+          Find your people.<br />
+          Less noise. More meaningful connections.
+        </p>
+      </div>
+
+      <nav class="footer-links-group" aria-label="Legal and support">
+        <a href="https://inseek.co.in/privacy-policy">Privacy Policy</a>
+        <a href="https://inseek.co.in/child-safety">Child Safety</a>
+        <a href="https://inseek.co.in/delete-account">Delete Account</a>
+        <a href="mailto:support@inseek.co.in">Contact</a>
+      </nav>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>© <span id="year">2026</span> InSeek. All rights reserved.</span>
+      <span>Built for meaningful connections.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Keep the copyright year current.
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Mobile navigation.
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+      });
+    });
+  </script>
 </body>
 </html>
-```
