@@ -1,269 +1,591 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Read the InSeek Privacy Policy to understand how information is handled when you use InSeek.">
+  <meta name="theme-color" content="#09090b">
+  <title>Privacy Policy | InSeek</title>
 
-:root {
-  color-scheme: dark;
-  --page: #09090b;
-  --surface: #111114;
-  --surface-2: #151519;
-  --text: #fafafa;
-  --muted: #a1a1aa;
-  --border: #27272a;
-  --accent: #a3e635;
-  --accent-soft: #1a2112;
-  --shadow: 0 18px 55px rgba(0, 0, 0, .22);
-}
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #09090b;
+      --surface: #111114;
+      --surface-2: #151519;
+      --text: #fafafa;
+      --muted: #a1a1aa;
+      --border: #27272a;
+      --accent: #a3e635;
+      --accent-dark: #1a2112;
+    }
 
-* { box-sizing: border-box; }
+    * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
 
-body {
-  margin: 0;
-  background:
-    radial-gradient(ellipse at top left, rgba(163, 230, 53, .09), transparent 38rem),
-    var(--page);
-  color: var(--text);
-  font: 16px/1.75 Inter, ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 50% -8%, rgba(163,230,53,.10), transparent 42%),
+        var(--bg);
+      color: var(--text);
+      font: 15px/1.75 Inter, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
 
-a {
-  color: var(--accent);
-  text-underline-offset: 3px;
-}
+    a {
+      color: var(--accent);
+      text-underline-offset: 4px;
+    }
 
-a:hover { color: #bef264; }
+    a:hover { color: #bef264; }
 
-.topbar {
-  background: rgba(9, 9, 11, .88);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(12px);
-}
+    .container {
+      width: min(100% - 40px, 1080px);
+      margin: 0 auto;
+    }
 
-.topbar-inner {
-  max-width: 1040px;
-  margin: auto;
-  padding: 18px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-}
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(39,39,42,.85);
+      background: rgba(9,9,11,.86);
+      backdrop-filter: blur(16px);
+    }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: var(--text);
-}
+    .topbar-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-.brand-mark {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: var(--accent);
-  color: #10110b;
-  font-size: 20px;
-  font-weight: 800;
-  box-shadow: 0 8px 18px rgba(163, 230, 53, .12);
-}
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--text);
+      text-decoration: none;
+    }
 
-.brand-name {
-  font-weight: 800;
-  letter-spacing: -.04em;
-  font-size: 20px;
-}
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--accent);
+      color: #10110b;
+      font-size: 22px;
+      font-weight: 900;
+    }
 
-.brand-tagline {
-  display: block;
-  color: var(--muted);
-  font-size: 12px;
-  margin-top: -3px;
-}
+    .brand-name {
+      display: block;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -.6px;
+    }
 
-.top-link {
-  font-size: 14px;
-  font-weight: 650;
-  text-decoration: none;
-}
+    .brand-tagline {
+      display: block;
+      margin-top: -5px;
+      color: var(--muted);
+      font-size: 11px;
+    }
 
-.container {
-  max-width: 1040px;
-  margin: 52px auto 72px;
-  padding: 0 22px;
-}
+    .top-link {
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+    }
 
-.hero {
-  background:
-    radial-gradient(ellipse at 80% 0%, rgba(163, 230, 53, .12), transparent 45%),
-    linear-gradient(145deg, #151519, #0d0d10);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 26px;
-  padding: 38px;
-  box-shadow: var(--shadow);
-  position: relative;
-  overflow: hidden;
-}
+    .top-link:hover { color: var(--accent); }
 
-.hero:after {
-  content: "";
-  position: absolute;
-  width: 240px;
-  height: 240px;
-  right: -70px;
-  top: -90px;
-  border: 1px solid rgba(163, 230, 53, .15);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 28px rgba(163, 230, 53, .025),
-    0 0 0 58px rgba(163, 230, 53, .015);
-  pointer-events: none;
-}
+    .container.main {
+      margin-top: 46px;
+      margin-bottom: 64px;
+    }
 
-.eyebrow {
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  font-size: 12px;
-  font-weight: 800;
-}
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 38px;
+      border: 1px solid #354126;
+      border-radius: 24px;
+      background:
+        radial-gradient(ellipse at 90% 0%, rgba(163,230,53,.12), transparent 50%),
+        linear-gradient(145deg, #151519, #0e0e10);
+    }
 
-h1 {
-  font-size: clamp(32px, 5vw, 46px);
-  line-height: 1.12;
-  letter-spacing: -.045em;
-  margin: 12px 0;
-}
+    .eyebrow {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
 
-.hero p {
-  max-width: 650px;
-  color: #d4d4d8;
-  margin: 0;
-}
+    h1 {
+      margin: 12px 0;
+      font-size: clamp(34px, 6vw, 48px);
+      line-height: 1.12;
+      letter-spacing: -2px;
+    }
 
-.updated {
-  display: inline-flex;
-  margin-top: 22px;
-  border: 1px solid #354126;
-  background: rgba(26, 33, 18, .65);
-  border-radius: 999px;
-  padding: 7px 12px;
-  color: #d9f99d;
-  font-size: 13px;
-}
+    .hero p {
+      max-width: 680px;
+      margin: 0;
+      color: #c4c4cc;
+      font-size: 15px;
+    }
 
-.layout {
-  display: grid;
-  grid-template-columns: 225px minmax(0, 1fr);
-  gap: 26px;
-  margin-top: 28px;
-  align-items: start;
-}
+    .updated {
+      display: inline-flex;
+      margin-top: 22px;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(17,17,20,.7);
+      color: var(--muted);
+      font-size: 12px;
+    }
 
-.toc {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 20px;
-  position: sticky;
-  top: 18px;
-}
+    .layout {
+      display: grid;
+      grid-template-columns: 225px minmax(0,1fr);
+      gap: 24px;
+      align-items: start;
+      margin-top: 24px;
+    }
 
-.toc h2 {
-  font-size: 12px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: .12em;
-  margin: 0 0 12px;
-}
+    .toc {
+      position: sticky;
+      top: 96px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: var(--surface);
+    }
 
-.toc a {
-  display: block;
-  color: #a1a1aa;
-  text-decoration: none;
-  font-size: 13px;
-  padding: 6px 0;
-  line-height: 1.4;
-}
+    .toc h2 {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
 
-.toc a:hover { color: var(--accent); }
+    .toc nav {
+      display: grid;
+      gap: 5px;
+    }
 
-.policy {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 34px;
-  box-shadow: var(--shadow);
-  min-width: 0;
-}
+    .toc a {
+      padding: 5px 0;
+      color: #b4b4bd;
+      font-size: 12px;
+      line-height: 1.5;
+      text-decoration: none;
+    }
 
-.policy section {
-  scroll-margin-top: 24px;
-  padding: 0 0 25px;
-  margin: 0 0 25px;
-  border-bottom: 1px solid var(--border);
-}
+    .toc a:hover { color: var(--accent); }
 
-.policy section:last-child {
-  border-bottom: 0;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
+    .policy {
+      min-width: 0;
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--surface);
+    }
 
-.policy h2 {
-  color: var(--text);
-  font-size: 21px;
-  line-height: 1.35;
-  letter-spacing: -.025em;
-  margin: 0 0 10px;
-}
+    .policy section {
+      padding-bottom: 25px;
+      margin-bottom: 25px;
+      border-bottom: 1px solid var(--border);
+      scroll-margin-top: 100px;
+    }
 
-.policy p,
-.policy ul {
-  color: #c4c4cc;
-}
+    .policy section:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
 
-.policy p { margin: 0 0 12px; }
+    .policy h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      line-height: 1.4;
+      letter-spacing: -.4px;
+    }
 
-.policy ul {
-  margin: 8px 0 12px;
-  padding-left: 22px;
-}
+    .policy p,
+    .policy li {
+      color: #c4c4cc;
+    }
 
-.policy li { margin: 5px 0; }
+    .policy p { margin: 0 0 12px; }
 
-.contact-card {
-  background: var(--accent-soft);
-  border: 1px solid #354126;
-  padding: 18px;
-  border-radius: 14px;
-}
+    .policy ul {
+      margin: 8px 0 12px;
+      padding-left: 22px;
+    }
 
-.contact-card p { color: #d9f99d; margin: 0; }
+    .policy li { margin: 6px 0; }
 
-footer {
-  text-align: center;
-  color: var(--muted);
-  font-size: 13px;
-  padding: 28px 12px 0;
-}
+    .policy strong { color: #f4f4f5; }
 
-footer a { color: var(--muted); }
+    .contact-card {
+      padding: 18px;
+      border: 1px solid #354126;
+      border-radius: 14px;
+      background: var(--accent-dark);
+    }
 
-@media (max-width: 720px) {
-  .container { margin-top: 28px; padding: 0 14px; }
-  .hero { padding: 28px 24px; border-radius: 20px; }
-  .layout { grid-template-columns: 1fr; gap: 16px; }
-  .toc { position: static; padding: 17px 20px; }
-  .toc nav { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
-  .policy { padding: 24px 20px; border-radius: 17px; }
-  .topbar-inner { padding: 14px 16px; }
-}
+    .contact-card p { margin: 0; }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
+    footer {
+      padding: 26px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 760px) {
+      .container { width: min(100% - 32px, 1080px); }
+
+      .container.main { margin-top: 26px; }
+
+      .hero {
+        padding: 28px 22px;
+        border-radius: 19px;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .toc {
+        position: static;
+        padding: 17px;
+      }
+
+      .toc nav {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+        column-gap: 14px;
+      }
+
+      .policy {
+        padding: 24px 20px;
+        border-radius: 17px;
+      }
+
+      .topbar-inner { min-height: 68px; }
+    }
+
+    @media (max-width: 480px) {
+      .brand-tagline { font-size: 10px; }
+      .top-link { font-size: 12px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .footer-links { gap: 13px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="https://inseek.co.in/" aria-label="InSeek home">
+        <span class="brand-mark" aria-hidden="true">i</span>
+        <span>
+          <span class="brand-name">InSeek</span>
+          <span class="brand-tagline">Find your people</span>
+        </span>
+      </a>
+
+      <a class="top-link" href="mailto:support@inseek.co.in">
+        Contact us ↗
+      </a>
+    </div>
+  </header>
+
+  <main class="container main">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="eyebrow">Transparency matters</div>
+      <h1 id="page-title">Privacy Policy</h1>
+      <p>
+        This policy explains how InSeek handles information when you use
+        our application and its people-discovery, profile, connection,
+        and messaging features.
+      </p>
+      <span class="updated">Last updated: October 29, 2026</span>
+    </section>
+
+    <div class="layout">
+      <aside class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <nav>
+          <a href="#introduction">1. Introduction</a>
+          <a href="#information">2. Information we collect</a>
+          <a href="#use">3. How we use information</a>
+          <a href="#sharing">4. Sharing and providers</a>
+          <a href="#profiles">5. Profiles and messages</a>
+          <a href="#security">6. Security and retention</a>
+          <a href="#choices">7. Choices and deletion</a>
+          <a href="#children">8. Children's privacy</a>
+          <a href="#international">9. International processing</a>
+          <a href="#changes">10. Policy changes</a>
+          <a href="#contact">11. Contact</a>
+        </nav>
+      </aside>
+
+      <article class="policy">
+        <section id="introduction">
+          <h2>1. Introduction</h2>
+          <p>
+            InSeek (“InSeek,” “we,” “our,” or “us”) helps users discover
+            and connect with people based on their interests and intentions.
+            This Privacy Policy describes how information may be collected,
+            used, stored, and shared when you use InSeek.
+          </p>
+          <p>Where consent is legally required, we will seek it separately.</p>
+        </section>
+
+        <section id="information">
+          <h2>2. Information We Collect</h2>
+          <p>
+            The information processed depends on the features you use and
+            the permissions you grant. It may include:
+          </p>
+          <ul>
+            <li><strong>Account and authentication information:</strong>
+              email address, account identifier, name, authentication
+              or session records, and information used to sign in with
+              Google or email verification.</li>
+            <li><strong>Profile information:</strong> details you choose
+              to add, such as your name, profile photo, bio, interests,
+              and intentions.</li>
+            <li><strong>Connections and messages:</strong> connection
+              requests, connection status, messages you send or receive,
+              reply references, and supported delivery or read-status
+              information.</li>
+            <li><strong>Notification information:</strong> push-notification
+              tokens and notification-related records used to deliver
+              or manage notifications.</li>
+            <li><strong>Technical and security information:</strong>
+              information made available through the app, hosting,
+              authentication, and infrastructure services to maintain
+              reliability, prevent misuse, and troubleshoot issues.</li>
+          </ul>
+          <p>
+            Please avoid adding sensitive personal information to your
+            profile or messages.
+          </p>
+        </section>
+
+        <section id="use">
+          <h2>3. How We Use Information</h2>
+          <p>
+            We may use information to create and secure accounts,
+            authenticate sign-ins, display profiles, support discovery
+            based on selected interests and intentions, enable connection
+            requests and messaging, deliver notifications, diagnose errors,
+            prevent abuse, respond to support requests, and comply with
+            applicable legal obligations.
+          </p>
+        </section>
+
+        <section id="sharing">
+          <h2>4. Sharing and Service Providers</h2>
+          <p>
+            Some sharing is necessary to operate a social discovery
+            and messaging service.
+          </p>
+          <ul>
+            <li><strong>Other users:</strong> profile information and
+              content may be shown to other users through InSeek features.</li>
+            <li><strong>Service providers:</strong> third-party providers
+              may process information on our behalf for authentication,
+              database and backend hosting, image storage, email delivery,
+              and push notifications, where configured.</li>
+            <li><strong>Legal and safety reasons:</strong> information
+              may be disclosed where required by law or where reasonably
+              necessary to address fraud, abuse, or security threats.</li>
+            <li><strong>Business changes:</strong> information may be
+              handled as part of a merger, acquisition, or transfer,
+              subject to applicable protections and law.</li>
+          </ul>
+          <p>
+            Our actual providers and data practices may change as the
+            service develops. This policy should reflect the production
+            app and its current configuration.
+          </p>
+        </section>
+
+        <section id="profiles">
+          <h2>5. Profiles, Connections, and Messages</h2>
+          <p>
+            InSeek helps people discover and connect with one another.
+            Information you add to your profile may be visible to other
+            users through discovery or other app features.
+          </p>
+          <p>
+            Connection requests and connection status are processed to
+            support connecting users. Messages are processed and stored
+            as needed to provide conversations. People you communicate
+            with may retain information they have already seen, copied,
+            or captured outside the app.
+          </p>
+          <p>
+            Do not share information through your profile or messages
+            that you would not want another user to see.
+          </p>
+        </section>
+
+        <section id="security">
+          <h2>6. Security and Data Retention</h2>
+          <p>
+            We use reasonable technical and organizational measures
+            intended to protect information against unauthorized access,
+            loss, misuse, or alteration. No electronic transmission or
+            storage method can be guaranteed to be completely secure.
+          </p>
+          <p>
+            We retain information for as long as reasonably necessary
+            to provide the service, maintain security, resolve disputes,
+            and meet applicable legal obligations. Retention periods
+            may vary by information type and system.
+          </p>
+        </section>
+
+        <section id="choices">
+          <h2>7. Your Choices and Account Deletion</h2>
+          <p>
+            Where the app provides controls, you can manage the information
+            you choose to include in your profile and the permissions
+            you grant on your device.
+          </p>
+          <p>
+            You can request account deletion using the account-deletion
+            option in the app or through our
+            <a href="https://inseek.co.in/delete-account">account deletion page</a>.
+            You may also contact us for assistance.
+          </p>
+          <p>
+            When an account is deleted, we intend to delete or
+            de-identify associated personal information, subject to
+            applicable legal obligations and legitimate security needs.
+            Some information may remain for a limited period in backups
+            or records that must be retained by law.
+          </p>
+        </section>
+
+        <section id="children">
+          <h2>8. Children's Privacy</h2>
+          <p>
+            InSeek is not intended for children under 13, and we do not
+            knowingly collect personal information from children under 13.
+            If you believe a child has provided personal information to us,
+            contact us so we can review the matter and take appropriate
+            action.
+          </p>
+          <p>
+            Read our
+            <a href="https://inseek.co.in/child-safety">Child Safety Standards</a>
+            for more information about our child-safety policies.
+          </p>
+        </section>
+
+        <section id="international">
+          <h2>9. International Processing and Your Rights</h2>
+          <p>
+            Our service providers may process information in countries
+            other than the country where you live. The locations involved
+            depend on the providers and their configurations.
+          </p>
+          <p>
+            Depending on applicable law, you may have rights to request
+            access to, correction of, or deletion of personal information,
+            or to object to or restrict certain processing. Contact us
+            to make a request.
+          </p>
+        </section>
+
+        <section id="changes">
+          <h2>10. Changes to This Policy</h2>
+          <p>
+            We may update this Privacy Policy as InSeek's features,
+            service providers, or legal obligations change. We will
+            publish revisions on this page and update the “Last updated”
+            date. Where required, we will provide additional notice
+            of material changes.
+          </p>
+        </section>
+
+        <section id="contact">
+          <h2>11. Contact</h2>
+          <p>
+            For questions about this policy or privacy and data-deletion
+            requests, contact:
+          </p>
+          <div class="contact-card">
+            <p>
+              <strong>InSeek Support</strong><br>
+              Email:
+              <a href="mailto:support@inseek.co.in">support@inseek.co.in</a>
+            </p>
+          </div>
+        </section>
+      </article>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <span>© 2026 InSeek · Find your people</span>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="https://inseek.co.in/">Home</a>
+          <a href="https://inseek.co.in/privacy-policy">Privacy Policy</a>
+          <a href="https://inseek.co.in/child-safety">Child Safety</a>
+          <a href="https://inseek.co.in/delete-account">Delete Account</a>
+          <a href="mailto:support@inseek.co.in">Contact</a>
+        </nav>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
+```
